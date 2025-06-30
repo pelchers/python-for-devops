@@ -173,4 +173,20 @@ basic_code = "demonstration"
 - **Simple first** to ensure core concepts are clear
 - **Test readability** on someone unfamiliar with the topic
 
+---
+
+## Critical Rule: Never Skip Logic Steps
+
+**APPLIES TO BOTH VERSIONS**: All examples and explanations must show **complete logical flow** without skipping steps.
+
+**Required Elements:**
+- **Show every variable relationship** explicitly (e.g., how `data_source` becomes `function_parameter`)
+- **Include all intermediate steps** between concepts (variable assignment, parameter passing, data transformation)
+- **Provide full context** for learners who might not know relationships otherwise
+- **Examples must be self-contained** - don't assume prior knowledge
+- **Explicitly connect** data sources → function parameters → return values
+- **Show complete workflow** from start to finish
+
+**Goal**: A complete beginner should be able to follow every logical step without confusion or missing connections.
+
 This approach ensures consistent, scannable reference materials alongside comprehensive learning resources tailored to your expertise. 

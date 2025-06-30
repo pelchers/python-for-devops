@@ -193,4 +193,54 @@ topic/
 
 ---
 
+## 9. Never Skip Logic Steps in Examples and Explanations
+
+**CRITICAL RULE**: All examples and explanations must show **complete logical flow** without skipping steps.
+
+### **Required Elements:**
+
+**✅ Show Every Variable Relationship:**
+- Explicitly show how `database_results` becomes `function_parameter`
+- Connect data sources to function parameters to return values
+- Don't assume learners understand implicit connections
+
+**✅ Include All Intermediate Steps:**
+- Variable assignment: `alice_data = database_results[0]`
+- Parameter passing: `function(alice_data)` → `parameter = alice_data`
+- Data transformation: unpacking, processing, formatting
+
+**✅ Provide Full Context:**
+- Examples must be self-contained
+- Don't reference concepts from earlier sections without explanation
+- Include complete workflow from start to finish
+
+**✅ Explicit Connection Points:**
+```python
+# ❌ BAD - Skips connection
+database_results = [("alice", "admin")]
+def process_user(user_tuple):  # Where does user_tuple come from?
+    name, role = user_tuple
+
+# ✅ GOOD - Shows connection  
+database_results = [("alice", "admin")]
+def process_user(user_tuple):  # user_tuple = data passed from database_results
+    name, role = user_tuple
+
+# Usage showing the connection:
+for user_record in database_results:  # user_record gets each tuple
+    result = process_user(user_record)  # user_record becomes user_tuple
+```
+
+### **Real-World Examples Must Include:**
+1. **Data Source Definition** (where data comes from)
+2. **Variable Assignments** (intermediate steps)
+3. **Function Calls** (parameter relationships)
+4. **Processing Steps** (what happens inside functions)
+5. **Output/Results** (what gets produced)
+
+### **Goal:**
+A complete beginner should be able to follow every logical step without confusion or missing connections.
+
+---
+
 This dual approach ensures we serve both quick-reference needs and deep-learning requirements while respecting the original educator's proven teaching methodology. 

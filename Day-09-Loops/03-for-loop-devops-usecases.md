@@ -4,6 +4,7 @@
 
    DevOps engineers use "for" loops when provisioning multiple servers or virtual machines with the same configuration. For example, when setting up monitoring agents on multiple servers:
 
+   *Bash Script:*
    ```bash
    servers=("server1" "server2" "server3")
    for server in "${servers[@]}"; do
@@ -15,6 +16,7 @@
 
    When deploying configurations to different environments (e.g., development, staging, production), DevOps engineers can use a "for" loop to apply the same configuration changes to each environment:
 
+   *Bash Script:*
    ```bash
    environments=("dev" "staging" "prod")
    for env in "${environments[@]}"; do
@@ -26,6 +28,7 @@
 
    Automating backup and restore operations is a common use case. DevOps engineers can use "for" loops to create backups for multiple databases or services and later restore them as needed.
 
+   *Bash Script:*
    ```bash
    databases=("db1" "db2" "db3")
    for db in "${databases[@]}"; do
@@ -37,6 +40,7 @@
 
    DevOps engineers use "for" loops to manage log files, rotate logs, and clean up older log files to save disk space.
 
+   *Bash Script:*
    ```bash
    log_files=("app.log" "access.log" "error.log")
    for log_file in "${log_files[@]}"; do
@@ -48,6 +52,7 @@
 
    In scenarios where you need to gather data or perform checks on multiple systems, a "for" loop is handy. For example, monitoring server resources across multiple machines:
 
+   *Bash Script:*
    ```bash
    servers=("server1" "server2" "server3")
    for server in "${servers[@]}"; do
@@ -59,6 +64,7 @@
 
    When working with cloud infrastructure, DevOps engineers can use "for" loops to manage resources like virtual machines, databases, and storage across different cloud providers.
 
+   *Bash Script:*
    ```bash
    instances=("instance1" "instance2" "instance3")
    for instance in "${instances[@]}"; do

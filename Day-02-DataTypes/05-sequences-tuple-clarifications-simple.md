@@ -170,11 +170,92 @@ second_user_email = database_results[1][1]  # "bob@company.com"
 third_user_role = database_results[2][2]    # "manager"
 ```
 
+## Tuple Unpacking - Assigning Column Values to Named Variables
+
+You can **unpack** tuple columns into **meaningful variable names** for easier use:
+
+```python
+# Extended user data with more columns
+users = [
+    ("alice", "alice@company.com", "admin", 30, "Engineering", "alice.jpg"),     # Row [0]
+    ("bob", "bob@company.com", "user", 25, "Marketing", "bob.jpg"),             # Row [1]  
+    ("carol", "carol@company.com", "manager", 35, "Sales", "carol.jpg")         # Row [2]
+]
+
+# Column positions:
+# [0] = username, [1] = email, [2] = role, [3] = age, [4] = department, [5] = photo
+
+# Method 1: Extract specific columns by index
+def get_user_card_data(user_row):
+    username = user_row[0]      # Column 0
+    age = user_row[3]           # Column 3  
+    photo = user_row[5]         # Column 5
+    return username, age, photo
+
+# Method 2: Unpack entire tuple, then select what you need
+def get_user_card_data_v2(user_row):
+    username, email, role, age, department, photo = user_row  # Unpack all columns
+    return username, age, photo  # Return only columns 0, 3, 5
+
+# Usage example for user card component
+for user in users:
+    # Get specific columns (1, 3, 5 would be email, age, photo)
+    email = user[1]      # Column 1 = email
+    age = user[3]        # Column 3 = age  
+    photo = user[5]      # Column 5 = photo
+    
+    # Pre-assign meaningful names for user card component
+    card_email = email
+    card_age = age
+    card_photo = photo
+    
+    print(f"User Card: {card_email}, Age: {card_age}, Photo: {card_photo}")
+    # Output: User Card: alice@company.com, Age: 30, Photo: alice.jpg
+```
+
+### Real User Card Component Example
+
+```python
+# User data from database
+users = [
+    ("alice", "alice@company.com", "admin", 30, "Engineering", "alice.jpg"),
+    ("bob", "bob@company.com", "user", 25, "Marketing", "bob.jpg"),
+    ("carol", "carol@company.com", "manager", 35, "Sales", "carol.jpg")
+]
+
+def create_user_card(user_tuple):
+    """Extract columns 1, 3, 5 for user card display"""
+    # Pre-assign column values to meaningful names
+    user_email = user_tuple[1]      # Column 1 = email
+    user_age = user_tuple[3]        # Column 3 = age
+    user_photo = user_tuple[5]      # Column 5 = photo
+    
+    # Return data formatted for user card component
+    return {
+        "email": user_email,
+        "age": user_age, 
+        "photo": user_photo
+    }
+
+# Generate user cards from database results
+user_cards = []
+for user in users:
+    card_data = create_user_card(user)
+    user_cards.append(card_data)
+    print(f"Card: {card_data['email']}, {card_data['age']} years old, Photo: {card_data['photo']}")
+
+# Output:
+# Card: alice@company.com, 30 years old, Photo: alice.jpg
+# Card: bob@company.com, 25 years old, Photo: bob.jpg  
+# Card: carol@company.com, 35 years old, Photo: carol.jpg
+```
+
 ## Remember
 
 - **First [#]** = Which row (which tuple)
 - **Second [#]** = Which column (which value in that tuple)
 - **Pattern**: `data[row][column]`
+- **Unpacking**: Assign column values to meaningful variable names
 - **Tuples cannot be changed** - convert to list if you need to modify
 - **Database records** typically come as tuples
 - **Each row** is one complete record (tuple)
